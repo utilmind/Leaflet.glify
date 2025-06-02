@@ -514,6 +514,7 @@ export class Lines extends BaseGlLayer<ILinesSettings> {
         weight,
         scale,
       } = instance;
+
       function checkHover(
         coordinate: Position,
         prevCoordinate: Position,
@@ -539,8 +540,13 @@ export class Lines extends BaseGlLayer<ILinesSettings> {
         }
         return false;
       }
-      if (!instance.active) return;
-      if (map !== instance.map) return;
+
+      if (!instance.active
+            || (map !== instance.map)
+            || !data.features.length) {
+        return;
+      }
+
       const oldHoveredFeatures = hoveringFeatures;
       const newHoveredFeatures: Array<Feature<LineString | MultiLineString>> =
         [];
