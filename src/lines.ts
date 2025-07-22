@@ -633,7 +633,7 @@ export class Lines extends BaseGlLayer<ILinesSettings> {
       if (!active
             || map !== instance.map
             || !featuresLen
-            || (!instance.hover && !instance.hoverOff)) {
+            || (!instance.hover && !instance.hoverOff)) { // if none of these method are used, no need to do all the calculations below to check whether mouse hovers some feature.
         return;
       }
 
@@ -724,6 +724,7 @@ export class Lines extends BaseGlLayer<ILinesSettings> {
         );
       }
 
+      // call `hoverOff()` only if it's really used in current instance.
       if (instance.hoverOff) {
         for (const oldHoveredFeature of oldHoveredFeatures) {
           if (!newHoveredFeatures.includes(oldHoveredFeature)) {
