@@ -5,9 +5,9 @@ import type {
   LatLng,
 } from "leaflet";
 import {
-  latLng,
-  latLngBounds,
-} from "leaflet"; // L.latLngBounds()
+  latLng, // L.latLng()
+  latLngBounds, // L.latLngBounds()
+} from "leaflet";
 
 import {
   Feature,
